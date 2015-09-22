@@ -1,4 +1,4 @@
 # Pesquisa-Operacional
 
 Projeto de Pesquisa Operacional
-ImplementaÃ§Ã£o do algoritmo Simplex em Ruby
+Implementação do algoritmo Simplex em Ruby
