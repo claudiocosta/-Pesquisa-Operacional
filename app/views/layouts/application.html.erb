@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="conteiner-fluid">
+<div class="conteiner-fluid maxh">
 
   <header>
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -22,12 +22,12 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <%= nav_active_btn("Simplex", '#') %>
+          <%= nav_active_btn("Simplex", simplex_index_path) %>
         </ul>
       </div>
     </nav>
   </header>
-  <div class="conteiner-fluid">
+  <div class="conteiner-fluid maxh">
 
     <%= yield %>
 
