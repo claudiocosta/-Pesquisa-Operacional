@@ -13,7 +13,8 @@
 
 
 <div class="col-md-10 col-sm-10 col-xs-10 maxh pre-scrollable">
-  <form action="result.html" method="POST">
+  <!--form action="" method="POST"-->
+  <%= form_tag(result_simplex_index_path) do %>
     <div class="content">
       <div id="parte1">
         <p class="text-center"><strong>Informações</strong></p><br/>
@@ -47,5 +48,6 @@
         </p>
       </div>
     </div>
-  </form>
+  <% end %>
+  <!--/form-->
 </div>

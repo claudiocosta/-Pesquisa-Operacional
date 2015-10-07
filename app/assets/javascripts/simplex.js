@@ -36,14 +36,14 @@ function montarParteDois(qtdVariaveis, qtdRestricoes) {
 	var i,j;
     var sa = "";
 	for (i = 0; i < qtdVariaveis; i++) {
-		$('#funcao').append('<input type="number" class="form-control fc-size" name="z[]" size="3" maxlength="2"/> x' + (i+1) + '&emsp;');
+		$('#funcao').append('<input type="number" class="form-control fc-size" name="z[]" size="3" maxlength="2"/> x<small>' + (i+1) + '</small>&emsp;');
 	}
 	for (i = 0; i < qtdRestricoes; i++) {
         sa = "";
         sa += '<p class="text-center">';
         for(j = 0; j < qtdVariaveis; j++) {
-            sa += '<input type="number" class="form-control fc-size" name="sa' + (i + 1) + '[]" size="3" value="0" min="0" maxlength="2"/> x' + (j + 1) + '&emsp;';
+            sa += '<input type="number" class="form-control fc-size" name="sa[' + (i + 1) + '][]" size="3" value="0" min="0" maxlength="2"/> x<small>' + (i+1) + '</small>&emsp;';
         }
-        $('#restricoes').append(sa + '</p><br/>');
+        $('#restricoes').append(sa + '<strong>&le;</strong>&emsp;<input type="number" class="form-control fc-size" name="b[]" size="3" value="0" min="0" maxlength="2"/> b</p><br/>');
 	}
 }

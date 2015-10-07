@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :simplex, only: :index
+  resources :simplex, only: :index do
+    post 'result', on: :collection
+  end
 
   root :to => "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
