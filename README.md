@@ -6,7 +6,10 @@ Professor Ricardo José Sabatini
 
 Implementação do algoritmo Simplex em Ruby on Rails
 
-**Veja como o nosso trabalho está clicando [aqui]()**
+Alunos:
+* Claudio Roberto Costa - [github.com/claudiocosta](https://github.com/claudiocosta)
+* Cristiano Vicente - [github.com/CristSky](https://github.com/CristSky)
+* Vitoria Mendes Lopes - [github.com/vimendes](https://github.com/vimendes)
 
 ###Documentação
 
