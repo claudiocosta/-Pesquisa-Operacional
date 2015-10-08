@@ -33,16 +33,33 @@ class Simplex
   def solve
     coef = @table.last.index(@table.last[2..(@qtd_var + 1)].min)
     menor = 100_000
-    index = nil
+    pivot = nil
     1.upto(@qtd_sa) do |i|
       if @table[i][coef] > 0 && (@table[i].last / @table[i][coef]) < menor
         menor = (@table[i].last / @table[i][coef])
-        index = i
+        pivot = i
       end
     end
-    @table[index][1] = @table[0][coef]
 
-    @table
+    @table[pivot][1] = @table[0][coef]
+
+    2.upto(@qtd_sa + @qtd_var + 2) do |i|
+      @table[pivot][i] = (@table[pivot][i] / @table[pivot][coef])
+    end
+
+    pivot += 1
+    pivot.upto(@table.length - 1) do |i|
+      2.upto(@qtd_sa + @qtd_var + 2) do |j|
+        @table[i][j] = ((@table[i - 1][j] * (@table[i + 1][coef] * -1)) + @table[i][j])
+        #p [@table[i - 1][j] , (@table[i + 1][coef] * -1) , @table[i][j]]
+        #p [[i,j], @table[i - 1 ][j]]
+      end
+
+    end
+
+    p @table
+
+
   end
 
   def formatted_tableau
