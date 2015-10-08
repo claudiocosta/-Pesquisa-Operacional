@@ -1,5 +1,5 @@
 class SimplexController < ApplicationController
-  require 'simplex2'
+  require 'simplex'
   def index
   end
 
@@ -20,8 +20,8 @@ class SimplexController < ApplicationController
     sa = @array[1]
     b = @array[2]
     #[[3,5], [[1,0], [0,2], [3,2]], [4,6,18]]
-    #[3.0, 5.0], [[1.0, 0.0], [0.0, 2.0], [3.0, 2.0]], [4.0, 6.0, 18.0]
-    @out = Simplex2.new([3.0, 5.0], [[1.0, 0.0], [0.0, 2.0], [3.0, 2.0]], [4.0, 6.0, 18.0])
+    #[3.0, 5.0], [[1.0, 0.0], [0.0, 1.0], [3.0, 2.0]], [4.0, 6.0, 18.0]
+    @out = Simplex.new([3.0, 5.0], [[1.0, 0.0], [0.0, 1.0], [3.0, 2.0]], [4.0, 6.0, 18.0])
   end
 
   private

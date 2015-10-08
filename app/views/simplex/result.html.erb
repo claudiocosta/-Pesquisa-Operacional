@@ -3,18 +3,7 @@
 </pre>
 
 <pre>
-  <%= @out.inspect %>
-</pre>
-
-<% while @out.can_improve? %>
-    <%# render 'table' %>
-    <%= @out.pivot %>
-    <%= @out.formatted_tableau %>
-    <br>
-<% end %>
-
-<pre>
-  <%= @out.solution %>
+  <%= @out.solve %>
 </pre>
 
 
@@ -42,23 +31,7 @@
   <h2>Resultado</h2>
       <div class="content">
         <table class="table table-striped table-hover">
-          <tr>
-            <th>Base</th>
-            <th>x1</th>
-            <th>x2</th>
-            <th>f1</th>
-            <th>f2</th>
-            <th>b</th>
-          </tr>
-          <tr>
-            <td>f1</td>
-          </tr>
-          <tr>
-            <td>f2</td>
-          </tr>
-          <tr>
-            <td>z</td>
-          </tr>
+          <% fill_table %>
         </table>
 
         <nav class="text-center">
