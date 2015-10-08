@@ -1,19 +1,21 @@
 class SimplexController < ApplicationController
+
   def index
   end
 
   def result
-    @resultado = simplex_params
+    ent = simplex_params
     @array = []
-    @array << @resultado['z'].map(&:to_i)
-    @teste = []
+    aux = []
+    @array << ent['z'].map(&:to_f)
 
-    @resultado['sa'].each do |x|
-      @teste << x[1].map(&:to_i)
+
+    ent['sa'].each do |x|
+      aux << x[1].map(&:to_f)
     end
 
-    @array << @teste
-    @array << @resultado['b'].map(&:to_i)
+    @array << aux
+    @array << ent['b'].map(&:to_f)
 
   end
 
