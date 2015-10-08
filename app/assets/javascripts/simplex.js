@@ -42,8 +42,8 @@ function montarParteDois(qtdVariaveis, qtdRestricoes) {
         sa = "";
         sa += '<p class="text-center">';
         for(j = 0; j < qtdVariaveis; j++) {
-            sa += '<input type="number" step="any" class="form-control fc-size" name="sa[' + (i + 1) + '][]" size="3" value="0" min="0" maxlength="2"/> x<small>' + (j+1) + '</small>&emsp;';
+            sa += '<input type="number" step="any" class="form-control fc-size" name="sa[' + (i + 1) + '][]" size="3" min="0" maxlength="2"/> x<small>' + (j+1) + '</small>&emsp;';
         }
-        $('#restricoes').append(sa + '<strong>&le;</strong>&emsp;<input type="number" step="any" class="form-control fc-size" name="b[]" size="3" value="0" min="0" maxlength="2"/> b</p><br/>');
+        $('#restricoes').append(sa + '<strong>&le;</strong>&emsp;<input type="number" step="any" class="form-control fc-size" name="b[]" size="3"  min="0" maxlength="2"/> b</p><br/>');
 	}
 }

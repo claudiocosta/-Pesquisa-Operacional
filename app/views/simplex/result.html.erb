@@ -1,4 +1,84 @@
-
 <pre>
   <%= @array.inspect %>
 </pre>
+
+<pre>
+  <%= @out.inspect %>
+</pre>
+
+<% while @out.can_improve? %>
+    <%# render 'table' %>
+    <%= @out.pivot %>
+    <%= @out.formatted_tableau %>
+    <br>
+<% end %>
+
+<pre>
+  <%= @out.solution %>
+</pre>
+
+
+<div class="col-md-2 col-sm-2 col-xs-2">
+  <div class="nav nav-stacked">
+    <p class="text-center"><strong>Função
+      <small>(max)</small>
+    </strong>:
+    </p>
+    <p class="text-center"> q x1 w x2... </p>
+    <br/>
+
+    <p class="text-center"><strong><u>Restrições:</u></strong></p>
+    <ul>
+      <li>q x1 w x2 &le; e</li>
+    </ul>
+    <br/><br/>
+    <label><input type="radio" name="resultado" value="simples"> Resultado simples</label>
+    <label><input type="radio" name="resultado" value="detalhado" checked> Resultado detalhado</label>
+  </div>
+</div>
+
+
+<div class="col-md-10 col-sm-10 col-xs-10">
+  <h2>Resultado</h2>
+      <div class="content">
+        <table class="table table-striped table-hover">
+          <tr>
+            <th>Base</th>
+            <th>x1</th>
+            <th>x2</th>
+            <th>f1</th>
+            <th>f2</th>
+            <th>b</th>
+          </tr>
+          <tr>
+            <td>f1</td>
+          </tr>
+          <tr>
+            <td>f2</td>
+          </tr>
+          <tr>
+            <td>z</td>
+          </tr>
+        </table>
+
+        <nav class="text-center">
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Anterior">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+              <a href="#" aria-label="Próximo">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+</div>
