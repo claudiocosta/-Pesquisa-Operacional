@@ -1,6 +1,5 @@
 class Simplex
-
-
+  # construtor, cria tabela em array
   def initialize(z,sa,b)
     @qtd_var = z.length
     @qtd_sa = sa.length
@@ -8,87 +7,99 @@ class Simplex
     f = []
     zi = []
     @table = []
+
+    # popula valores de f para tabela
     fmatrix = Array.new(@qtd_sa){Array.new(@qtd_sa, 0)}
     1.upto(@qtd_var) { |n| x << "x" + "#{n}" }
     1.upto(@qtd_sa) { |n| f << "f" + "#{n}" }
     @table << ['linha','base',*x,*f,'b']
 
-    # inverte as variaveis
+    # inverte o sinal das variaveis z
     z.each do |aux|
       zi << aux * -1
     end
 
     # popula a array table
-    sa.map.with_index do |aux,i|
+    #sa.map.with_index do |aux,i|
+    0.upto(@qtd_sa - 1) do |i|
       fmatrix[i][i] = 1
-      @table << [i + 1, f[i], *sa[i], *fmatrix[i], b[i]]
+      @table << [(i + 1).to_s, f[i], *sa[i], *fmatrix[i], b[i]]
     end
-    @table << [@table.length + 1, 'z', *zi, *Array.new(@qtd_sa + 1, 0)]
+    @table << [@table.length.to_s, 'z', *zi, *Array.new(@qtd_sa + 1, 0)]
   end
 
-  def test
-    p @table
+  # converte a tabela inteira para string
+  def table_s
+    aux = @table.clone
+    l = []
+    table_str = []
+    aux.each do |line|
+      line.each do |e|
+        if e.class == String
+          l << e
+        else
+          l << e.round(3).to_s
+        end
+      end
+      table_str << l.clone
+      l.clear
+    end
+    table_str
   end
 
   def solve
-    coef = @table.last.index(@table.last[2..(@qtd_var + 1)].min)
-    menor = 100_000
-    pivot = nil
-    1.upto(@qtd_sa) do |i|
-      if @table[i][coef] > 0 && (@table[i].last / @table[i][coef]) < menor
-        menor = (@table[i].last / @table[i][coef])
-        pivot = i
-      end
-    end
-
-    @table[pivot][1] = @table[0][coef]
-
-    2.upto(@qtd_sa + @qtd_var + 2) do |i|
-      @table[pivot][i] = (@table[pivot][i] / @table[pivot][coef])
-    end
-
-    pivot += 1
-    pivot.upto(@table.length - 1) do |i|
-      2.upto(@qtd_sa + @qtd_var + 2) do |j|
-        @table[i][j] = ((@table[i - 1][j] * (@table[i + 1][coef] * -1)) + @table[i][j])
-        #p [@table[i - 1][j] , (@table[i + 1][coef] * -1) , @table[i][j]]
-        #p [[i,j], @table[i - 1 ][j]]
-      end
-
-    end
-
-    p @table
-
-
-  end
-
-  def formatted_tableau
-    if can_improve?
-      pivot_column = entering_variable
-      pivot_row    = pivot_row(pivot_column)
+    pivot_col = coef_col
+    if coef_col.nil?
+      nil
     else
+      table_len = (@qtd_sa + @qtd_var + 2)
+      menor = 100_000_000
       pivot_row = nil
-    end
-    num_cols = @c.size + 1
-    c = formatted_values(@c.to_a)
-    b = formatted_values(@b.to_a)
-    a = @a.to_a.map {|ar| formatted_values(ar.to_a) }
-    #x = []
-    #f = []
-    #1.upto(@c.to_a.length - a.length) { |n| x << "x" + "#{n}" }
-    #1.upto(a.length) { |n| f << "f" + "#{n}" }
-    #f_row = ['Base',]
-    table = []
+      1.upto(@qtd_sa) do |i|
+        if @table[i][pivot_col] > 0 && @table[i].last.fdiv(@table[i][pivot_col]) < menor
+          menor = @table[i].last.fdiv(@table[i][pivot_col])
+          pivot_row = i
+        end
+      end
 
-    a.each_index do |i|
-      a[i] << b[i]
-      table << a[i]
+      # valor do pivô
+      piv_val = @table[pivot_row][pivot_col]
+      # coloca variavel na base
+      @table[pivot_row][1] = @table[0][pivot_col]
+
+      # divide elementos da linha do pivô
+      2.upto(table_len) do |i|
+        @table[pivot_row][i] = @table[pivot_row][i].fdiv(piv_val)
+      end
+
+      # reajusta tabela
+      1.upto(@table.length - 1) do |i|
+        if @table[i][pivot_col] != 0 && i != pivot_row
+          piv_aux = (@table[i][pivot_col] * -1)
+          2.upto(table_len) do |j|
+            @table[i][j] = ((@table[pivot_row][j] * piv_aux) + @table[i][j])
+          end
+        end
+      end
+      @table
     end
-    table << (c << "0")
   end
 
+  # busca coluna do coeficiente
+  def coef_col
+    if @table.last[2..(@qtd_var + 1)].min == 0
+      nil
+    else
+      @table.last.index(@table.last[2..(@qtd_var + 1)].min)
+    end
+  end
 
-  def formatted_values2(array)
-    array.map {|c| c.round(3).to_s }
+  # retorna se é calculavel
+  def can_improve?
+    if coef_col.nil?
+      false
+    else
+      true
+    end
   end
 end
