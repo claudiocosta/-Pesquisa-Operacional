@@ -11,10 +11,15 @@ body {
     padding: 30px;
 }
 
-.fc-size {
+.inline {
     display: inline-block !important;
     width: 10% !important;
-    padding-bottom: 5px;
+}
+
+.fc-size {
+    width: 90px !important;
+    min-width: 90%;
+    margin: 5px 5px !important;
 }
 
 #parte2 {

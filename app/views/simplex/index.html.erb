@@ -20,10 +20,10 @@
         <p class="text-center"><strong>Informações</strong></p><br/>
         <p class="text-center">
           <label for="quantVariaveis">Quantidade de Variáveis: </label>
-          <input type="number" class="form-control fc-size" name="quantVariaveis" id="quantVariaveis" autofocus size="3" min="2" maxlength="1"/>
+          <input type="number" class="form-control inline" name="quantVariaveis" id="quantVariaveis" autofocus size="3" min="2" maxlength="1"/>
 
           <label for="quantRestricoes">&nbsp;Quantidade de Restrições: </label>
-          <input type="number" class="form-control fc-size" name="quantRestricoes" id="quantRestricoes" size="3" min="1" maxlength="2"/>
+          <input type="number" class="form-control inline" name="quantRestricoes" id="quantRestricoes" size="3" min="1" maxlength="2"/>
         </p>
         <br>
         <p class="text-center">
@@ -33,16 +33,21 @@
       <br/><br/>
 
       <div id="parte2">
-        <p class="text-center" id="funcao">F
-          <small>(max)</small>
-          =
-        </p>
+        <table>
+          <tr id="valname">
+            <!-- Variáveis -->
+          </tr>
+	        <tr id="funcao">
+				<!-- Variáveis -->
+	        </tr>
+        </table>
         <br/>
 
         <p class="text-center"><u><strong>Restrições</strong></u></p>
+		<table id="restricoes">
 
-        <div id="restricoes"></div>
-
+		</table>
+        <br>
         <p class="text-center">
           <button class="btn-warning btn"> Resultado &raquo; </button>
         </p>

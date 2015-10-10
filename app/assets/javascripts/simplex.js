@@ -1,7 +1,3 @@
-//$(document).on('ready',function() {
-	//$('#quantVariaveis').focus();
-//});
-
 function valida() {
 	var variaveis = $('#quantVariaveis');
 	var restricoes = $('#quantRestricoes');
@@ -35,15 +31,19 @@ function valida() {
 function montarParteDois(qtdVariaveis, qtdRestricoes) {
 	var i,j;
     var sa = "";
+    var sanome = "";
 	for (i = 0; i < qtdVariaveis; i++) {
-		$('#funcao').append('<input type="number" step="any"  class="form-control fc-size" name="z[]" size="3" maxlength="2"/> x<small>' + (i+1) + '</small>&emsp;');
+        $('#valname').append('<th style="text-align: center">X'+(i+1)+'</th>');
+		$('#funcao').append('<td style="min-width: 110px"><input type="number" step="any" class="form-control fc-size" name="z[]" size="3" maxlength="2"/></td>');
 	}
 	for (i = 0; i < qtdRestricoes; i++) {
-        sa = "";
-        sa += '<p class="text-center">';
+        sa = "<tr>";
+        sanome = "<tr>";
         for(j = 0; j < qtdVariaveis; j++) {
-            sa += '<input type="number" step="any" class="form-control fc-size" name="sa[' + (i + 1) + '][]" size="3" min="0" maxlength="2"/> x<small>' + (j+1) + '</small>&emsp;';
-        }
-        $('#restricoes').append(sa + '<strong>&le;</strong>&emsp;<input type="number" step="any" class="form-control fc-size" name="b[]" size="3"  min="0" maxlength="2"/> b</p><br/>');
+            sanome += '<th style="text-align: center">X'+(j+1)+'</th>';
+            sa += '<td><input type="number" step="any" class="form-control fc-size" name="sa[' + (i + 1) + '][]" size="3" min="0" maxlength="2"/></td>';
+        }//<strong>&le;</strong>&emsp;
+        $('#restricoes').append(sanome + '<th></th><th style="text-align: center">b</th></tr>');
+        $('#restricoes').append(sa + '<th>&le;</th><td><input type="number" step="any" class="form-control fc-size" name="b[]" size="3"  min="0" maxlength="2"/></td></tr>');
 	}
 }
