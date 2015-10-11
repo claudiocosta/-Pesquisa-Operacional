@@ -11,15 +11,20 @@ body {
     padding: 30px;
 }
 
-.inline {
-    display: inline-block !important;
-    width: 10% !important;
+.form-inline {
+    text-align: center;
 }
 
 .fc-size {
     width: 90px !important;
     min-width: 90%;
     margin: 5px 5px !important;
+}
+
+.fci-size {
+    margin: 5px auto;
+    max-width: 120px;
+    min-width: 70px;
 }
 
 #parte2 {

@@ -1,58 +1,46 @@
-<div class="col-md-2 col-sm-2 col-xs-2">
-  <div class="nav nav-stacked">
-    <p class="text-center">
-      <strong>Instruções</strong>
-    </p>
-    <ul>
-      <li>Digite a quantidade de variáveis que serão necessárias na função;</li>
-      <li class="invisible"></li>
-      <li>Digite a quantidade de restrições que deseja implementar;</li>
-    </ul>
-  </div>
-</div>
-
-
-<div class="col-md-10 col-sm-10 col-xs-10 maxh pre-scrollable">
+<div class="maxh pre-scrollable">
   <!--form action="" method="POST"-->
-  <%= form_tag(result_simplex_index_path) do %>
-    <div class="content">
-      <div id="parte1">
-        <p class="text-center"><strong>Informações</strong></p><br/>
-        <p class="text-center">
-          <label for="quantVariaveis">Quantidade de Variáveis: </label>
-          <input type="number" class="form-control inline" name="quantVariaveis" id="quantVariaveis" autofocus size="3" min="2" maxlength="1"/>
+  <%= form_tag(result_simplex_index_path, class: "form-inline") do %>
+      <div class="content">
+        <div id="parte1 form-group">
+          <p class="text-center"><u><strong>Informações</strong></u></p><br/>
+            <label for="quantVariaveis">Quantidade de Variáveis: </label>
+            <input type="number" class="form-control fci-size" name="quantVariaveis" id="quantVariaveis" autofocus size="3" min="2" maxlength="1"/>
 
-          <label for="quantRestricoes">&nbsp;Quantidade de Restrições: </label>
-          <input type="number" class="form-control inline" name="quantRestricoes" id="quantRestricoes" size="3" min="1" maxlength="2"/>
-        </p>
-        <br>
-        <p class="text-center">
-          <button class="btn-warning btn" id="btn-valida" onclick="event.preventDefault(); valida();"> Continuar &raquo; </button>
-        </p>
+            <label for="quantRestricoes">&nbsp;Quantidade de Restrições: </label>
+            <input type="number" class="form-control fci-size" name="quantRestricoes" id="quantRestricoes" size="3" min="1" maxlength="2"/>
+          </div>
+
+          <br>
+
+          <p class="text-center">
+            <button class="btn-warning btn" id="btn-valida" onclick="event.preventDefault(); valida();">
+              Continuar &raquo; </button>
+          </p>
+        </div>
+        <br/><br/>
+
+        <div id="parte2">
+          <table class="xcenter">
+            <tr id="valname">
+              <!-- label -->
+            </tr>
+            <tr id="funcao">
+              <!-- Variáveis -->
+            </tr>
+          </table>
+          <br/>
+
+          <p class="text-center"><u><strong>Restrições</strong></u></p>
+          <table id="restricoes" class="xcenter">
+
+          </table>
+          <br>
+
+          <p class="text-center">
+            <button class="btn-warning btn"> Resultado &raquo; </button>
+          </p>
+        </div>
       </div>
-      <br/><br/>
-
-      <div id="parte2">
-        <table class="xcenter">
-          <tr id="valname">
-            <!-- Variáveis -->
-          </tr>
-	        <tr id="funcao">
-				<!-- Variáveis -->
-	        </tr>
-        </table>
-        <br/>
-
-        <p class="text-center"><u><strong>Restrições</strong></u></p>
-		<table id="restricoes" class="xcenter">
-
-		</table>
-        <br>
-        <p class="text-center">
-          <button class="btn-warning btn"> Resultado &raquo; </button>
-        </p>
-      </div>
-    </div>
   <% end %>
-  <!--/form-->
 </div>
