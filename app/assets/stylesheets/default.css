@@ -46,3 +46,7 @@ body {
 .carousel-indicators .active {
     background-color: #44f !important;
 }
+
+.xcenter {
+    margin: 0 auto;
+}
