@@ -3,6 +3,7 @@ class Simplex
   def initialize(z,sa,b)
     @qtd_var = z.length
     @qtd_sa = sa.length
+    @b = b
     x = []
     f = []
     zi = []
@@ -29,8 +30,12 @@ class Simplex
   end
 
   # converte a tabela inteira para string
-  def table_s
-    aux = @table.clone
+  def table_s(tb = nil)
+    if tb.nil?
+      aux = @table.clone
+    else
+      aux = tb
+    end
     l = []
     table_str = []
     aux.each do |line|
@@ -83,6 +88,45 @@ class Simplex
       end
       @table
     end
+  end
+
+  def result
+    col_begin = (2 + @qtd_var)
+    col_end = (col_begin + @qtd_sa - 1)
+    table_aux = []
+    table = []
+
+    # calcula análise de sensibilidade para todos elementos
+    col_begin.upto(col_end) do |i|
+      line = []
+      1.upto(@qtd_sa) do |j|
+        if @table[j][i] == 0
+          line << 0
+        else
+          line << @table[j].last / (@table[j][i] * -1)
+        end
+      end
+      table_aux << [@table.last[i], *line.minmax]
+      line.clear
+    end
+
+    # monta tabela organizada para uso na view
+    table_aux.each_with_index do |el,i|
+      line = []
+      line << el[0]
+      1.upto(2) do |j|
+        if el[j] == 0
+          line << ""
+        else
+          line << el[j] + @b[i]
+        end
+      end
+      line.insert(0, "R" + (i + 1).to_s)
+      line << @b[i]
+      table << line.clone
+      line.clear
+    end
+    table
   end
 
   # busca coluna do coeficiente

@@ -8,6 +8,7 @@ class SimplexController < ApplicationController
     @array = []
     aux = []
     @tables = []
+    @result
     @array << ent['z'].map(&:to_f)
 
     ent['sa'].each do |x|
@@ -27,6 +28,8 @@ class SimplexController < ApplicationController
     until @out.solve.nil?
       @tables << @out.table_s
     end
+
+    @result = @out.table_s(@out.result)
   end
 
   private

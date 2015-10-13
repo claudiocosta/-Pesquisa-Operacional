@@ -52,6 +52,14 @@ body {
     background-color: #44f !important;
 }
 
+.carousel-control.left, .carousel-control.right {
+    background: none !important;
+}
+
+.carousel-control {
+    color: transparent !important;
+}
+
 .xcenter {
     margin: 0 auto;
 }
