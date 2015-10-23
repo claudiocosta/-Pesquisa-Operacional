@@ -119,7 +119,7 @@ class Simplex
         if el[j] == 0 or aux < 0
           line << ""
         else
-          line << el[j] + @b[i]
+          line << aux
         end
       end
       line.insert(0, "R" + (i + 1).to_s)
