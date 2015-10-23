@@ -115,7 +115,8 @@ class Simplex
       line = []
       line << el[0]
       1.upto(2) do |j|
-        if el[j] == 0
+        aux = el[j] + @b[i]
+        if el[j] == 0 or aux < 0
           line << ""
         else
           line << el[j] + @b[i]
