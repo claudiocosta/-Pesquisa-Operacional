@@ -1,0 +1,32 @@
+<div class="maxh pre-scrollable">
+  <!--form action="" method="POST"-->
+  <% opt_name(request.path) %>
+  <%= form_tag(result_simplex_index_path, class: "form-inline") do %>
+      <div class="content">
+        <div id="parte1 form-group">
+          <p class="text-center"><u><strong>Informações</strong></u></p><br/>
+          <label for="input1"><%= @input1 %></label>
+          <input type="number" class="form-control fci-size" name="quantVariaveis" id="input1" autofocus size="3" min="1"/>
+
+          <label for="input2">&nbsp;<%= @input2 %></label>
+          <input type="number" class="form-control fci-size" name="quantRestricoes" id="input2" size="3" min="1"/>
+        </div>
+
+        <br>
+
+        <p class="text-center">
+          <button class="btn-warning btn" id="btn-valida" onclick="event.preventDefault(); valida();">
+            Continuar &raquo; </button>
+        </p>
+      </div>
+      <br/><br/>
+
+      <% if @opt == 0 %>
+          <%= render "simplex/simplex" %>
+      <% elsif @opt == 1 %>
+          <%= render "knapsack/knapsack" %>
+      <% end %>
+
+      <br>
+  <% end %>
+</div>

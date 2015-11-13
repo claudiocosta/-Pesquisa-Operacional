@@ -11641,53 +11641,66 @@ return jQuery;
 
 }).call(this);
 function valida() {
-	var variaveis = $('#quantVariaveis');
-	var restricoes = $('#quantRestricoes');
+    var variaveis = $('#input1');
+    var restricoes = $('#input2');
     var btn = $('#btn-valida');
-	if((variaveis.val() != "") && (restricoes.val() != "")) {
-		if(variaveis.val() <= 1) {
-			alert('A quantidade das variáveis tem que ser maior que um.');
-			variaveis.focus();
-		} else {
-			if(restricoes.val() <= 0) {
-				alert('A quantidade das restrições tem que ser maior que zero.');
-				restricoes.focus();
-			} else {
-				variaveis.attr('readonly', true);
-				restricoes.attr('readonly', true);
-                btn.attr('disabled','');
-				montarParteDois((variaveis.val()), (restricoes.val()));
-				$('#parte2').show(400);
-			}
-		}
-	} else {
-		alert('Preencha os campos obrigatórios!');
-		if(variaveis.val() == "") {
-			variaveis.focus();
-		} else {
-			restricoes.focus();
-		}
-	}
+    if ((variaveis.val() != "") && (restricoes.val() != "")) {
+        if (variaveis.val() < 1) {
+            alert('A quantidade das variáveis tem que ser maior que zero.');
+            variaveis.focus();
+        } else {
+            if (restricoes.val() < 1) {
+                alert('A quantidade das restrições tem que ser maior que zero.');
+                restricoes.focus();
+            } else {
+                variaveis.attr('readonly', true);
+                restricoes.attr('readonly', true);
+                btn.attr('disabled', '');
+                console.log(window.location.pathname == "/simplex");
+                if (window.location.pathname == "/simplex")
+                    montarParteDois((variaveis.val()), (restricoes.val()));
+                else if (window.location.pathname == "/knapsack")
+                    knapsackForm(restricoes.val());
+                $('#parte2').show(400);
+            }
+        }
+    } else {
+        alert('Preencha os campos obrigatórios!');
+        if (variaveis.val() == "") {
+            variaveis.focus();
+        } else {
+            restricoes.focus();
+        }
+    }
 }
 
 function montarParteDois(qtdVariaveis, qtdRestricoes) {
-	var i,j;
+    var i, j;
     var sa = "";
-    var sanome = "";
-	for (i = 0; i < qtdVariaveis; i++) {
-        $('#valname').append('<th style="text-align: center">X'+(i+1)+'</th>');
-		$('#funcao').append('<td style="min-width: 110px"><input type="number" step="any" class="form-control fc-size" name="z[]" size="3" maxlength="2"/></td>');
-	}
-	for (i = 0; i < qtdRestricoes; i++) {
+    var sa_nome = "";
+    for (i = 0; i < qtdVariaveis; i++) {
+        $('#valname').append('<th style="text-align: center">X' + (i + 1) + '</th>');
+        $('#funcao').append('<td style="min-width: 110px"><input type="number" step="any" class="form-control fc-size" name="z[]" size="3" maxlength="2"/></td>');
+    }
+    for (i = 0; i < qtdRestricoes; i++) {
         sa = "<tr>";
-        sanome = "<tr>";
-        for(j = 0; j < qtdVariaveis; j++) {
-            sanome += '<th style="text-align: center">X'+(j+1)+'</th>';
-            sa += '<td><input type="number" step="any" class="form-control fc-size" name="sa[' + (i + 1) + '][]" size="3" min="0" maxlength="2"/></td>';
-        }//<strong>&le;</strong>&emsp;
-        $('#restricoes').append(sanome + '<th></th><th style="text-align: center">b</th></tr>');
-        $('#restricoes').append(sa + '<th>&le;</th><td><input type="number" step="any" class="form-control fc-size" name="b[]" size="3"  min="0" maxlength="2"/></td></tr>');
-	}
+        sa_nome = "<tr>";
+        for (j = 0; j < qtdVariaveis; j++) {
+            sa_nome += '<th style="text-align: center">X' + (j + 1) + '</th>';
+            sa += '<td><input type="number" step="any" class="form-control fc-size" name="sa[' + (i + 1) + '][]" size="3" maxlength="2"/></td>';
+        }
+        $('#restricoes').append(sa_nome + '<th></th><th style="text-align: center">b</th></tr>')
+            .append(sa + '<th>&le;</th><td><input type="number" step="any" class="form-control fc-size" name="b[]" size="3" min="0" maxlength="2"/></td></tr>');
+    }
+}
+
+function knapsackForm(qtdItens) {
+    $.('#item').append('<tr><th>Itens</th><th>Peso</th><th>Custo</th></tr>');
+    for (i = 1; i <= qtdItens; i++) {
+        $.('#item').append('<tr><th>' + i + '</th>' +
+        '<td><input type="number" step="any" class="form-control fc-size" name="w[]" size="3" min="0" /></td>' +
+        '<td><input type="number" step="any" class="form-control fc-size" name="c[]" size="3" min="0" /></td></tr>');
+    }
 }
 ;
 // This is a manifest file that'll be compiled into application.js, which will include all the files

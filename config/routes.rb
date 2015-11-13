@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     post 'result', on: :collection
   end
 
+  resources :knapsack, only: :index do
+    post 'result', on: :collection
+  end
+
   root :to => "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
