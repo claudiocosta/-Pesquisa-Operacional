@@ -9,10 +9,12 @@ module ApplicationHelper
 
   def opt_name(path)
     if path == "/simplex"
+      @path = result_simplex_index_path
       @input1 = "Quantidade de Variáveis: "
       @input2 = "Quantidade de Restrições: "
       @opt = 0
     elsif path == "/knapsack"
+      @path = result_knapsack_index_path
       @input1 = "Capacidade Máxima: "
       @input2 = "Quantidade de Itens: "
       @opt = 1

@@ -1,5 +1,4 @@
 class SimplexController < ApplicationController
-  require 'simplex'
   def index
   end
 

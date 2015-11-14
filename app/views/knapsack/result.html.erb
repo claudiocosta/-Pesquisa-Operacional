@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="container xcenter">
+    <h2 class="text-center"><u>Tabelas</u></h2>
+
+    <div class="container-fluid">
+
+      <table class="table table-striped table-hover">
+        <tr>
+          <th></th>
+          <% 0.upto(@max_weight) do |i| %>
+              <th><%= i %></th>
+          <% end %>
+        </tr>
+        <% @table.each_with_index do |line, i| %>
+            <% if @items[i - 1] %>
+                <tr class="success">
+            <% else %>
+                <tr>
+            <% end %>
+
+            <th><%= i %></th>
+            <% line.each do |el| %>
+                <td><%= el %></td>
+            <% end %>
+            </tr>
+        <% end %>
+
+      </table>
+
+
+    </div>
+  </div>
+</div>
