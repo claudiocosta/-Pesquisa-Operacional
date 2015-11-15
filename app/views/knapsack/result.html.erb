@@ -1,33 +1,85 @@
 <div class="container-fluid">
   <div class="container xcenter">
-    <h2 class="text-center"><u>Tabelas</u></h2>
+    <h2 class="text-center"><u>Itens</u></h2>
 
     <div class="container-fluid">
-
+      <!-- tabela de itens -->
       <table class="table table-striped table-hover">
+
+        <thead>
+        <tr>
+          <th>Objeto</th>
+          <% 1.upto(@w.length) do |i| %>
+              <% if @items[i - 1].nil? %>
+                  <th>
+              <% else %>
+                  <th class="alert-success">
+              <% end %>
+              <%= i %></th>
+          <% end %>
+        </tr>
+        </thead>
+
+        <% 0.upto(1) do |i| %>
+
+            <tr>
+              <th><%= @str[i] %></th>
+              <% @w.each_with_index do |el, j| %>
+
+                  <% if @items[j].nil? %>
+                      <td>
+                  <% else %>
+                      <td class="success">
+                  <% end %>
+                  <%= el %></td>
+
+              <% end %>
+            </tr>
+
+        <% end %>
+
+      </table>
+    </div>
+
+    <h2 class="text-center"><u>Resultado</u></h2>
+
+    <div class="container-fluid">
+      <!-- tabela do resultado -->
+      <table class="table table-striped table-hover table-bordered text-center">
+
+        <thead>
         <tr>
           <th></th>
           <% 0.upto(@max_weight) do |i| %>
               <th><%= i %></th>
           <% end %>
         </tr>
-        <% @table.each_with_index do |line, i| %>
-            <% if @items[i - 1] %>
-                <tr class="success">
-            <% else %>
-                <tr>
-            <% end %>
+        </thead>
 
-            <th><%= i %></th>
-            <% line.each do |el| %>
-                <td><%= el %></td>
-            <% end %>
+        <% @table.each_with_index do |line, i| %>
+
+            <tr>
+              <% if @items[i - 1] and i > 0 %>
+                  <th class="alert-info">
+              <% else %>
+                  <th>
+              <% end %>
+              <%= i %></th>
+
+              <% line.each_with_index do |el, j| %>
+                  <% if @items[i] and @items[i] == j %>
+                      <td class="alert-danger">
+                  <% elsif @items[i - 1] and @items[i - 1] == j and i > 0 %>
+                      <td class="alert-success">
+                  <% else %>
+                      <td>
+                  <% end %>
+                  <%= el %></td>
+              <% end %>
             </tr>
         <% end %>
 
       </table>
-
-
     </div>
   </div>
 </div>

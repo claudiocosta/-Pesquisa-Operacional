@@ -3,23 +3,15 @@ class SimplexController < ApplicationController
   end
 
   def result
-    ent = simplex_params
-    @array = []
-    aux = []
+    sa = []
     @tables = []
-    @result
-    @array << ent['z'].map(&:to_f)
 
-    ent['sa'].each do |x|
-      aux << x[1].map(&:to_f)
+    simplex_params['sa'].each do |x|
+      sa << x[1].map(&:to_f)
     end
 
-    @array << aux
-    @array << ent['b'].map(&:to_f)
-
-    z = @array[0]
-    sa = @array[1]
-    b = @array[2]
+    z = simplex_params['z'].map(&:to_f)
+    b = simplex_params['b'].map(&:to_f)
 
     @out = Simplex.new(z,sa,b)
     @table = @out.table_s

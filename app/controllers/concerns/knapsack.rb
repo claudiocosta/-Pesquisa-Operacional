@@ -4,7 +4,7 @@ class Knapsack
     @cost = c
     @max = max
     @qtd_items = c.length - 1
-    @items = Array.new(@qtd_items)
+    @items = []
     @matrix = []
     head = Array.new(max + 1, 0)
     @matrix << head
@@ -33,11 +33,12 @@ class Knapsack
   end
 
   def solve(i, j)
-    unless i < 0
-      if @matrix[i][j] == @matrix[i - 1][j]
+    unless i == -1
+      p [[i + 1,j],@matrix[i + 1][j], "==", @matrix[i][j]]
+      if @matrix[i + 1][j] == @matrix[i][j]
         solve(i - 1, j)
       else
-        @items[i] = true
+        @items[i] = j
         solve(i - 1, j - @weight[i])
       end
     end
@@ -46,13 +47,4 @@ class Knapsack
   def result
     [@matrix, @items]
   end
-
-  def test
-    @matrix.each do |line|
-      p line
-    end
-
-    @items
-  end
-
 end
