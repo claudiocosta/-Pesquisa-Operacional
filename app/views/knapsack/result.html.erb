@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <!-- tabela de itens -->
       <table class="table table-striped table-hover">
-
+        <!-- Objetos index -->
         <thead>
         <tr>
           <th>Objeto</th>
@@ -19,24 +19,34 @@
           <% end %>
         </tr>
         </thead>
+        <!-- Peso -->
+        <tr>
+          <th><%= @str[0] %></th>
+          <% @w.each_with_index do |el, i| %>
 
-        <% 0.upto(1) do |i| %>
-
-            <tr>
-              <th><%= @str[i] %></th>
-              <% @w.each_with_index do |el, j| %>
-
-                  <% if @items[j].nil? %>
-                      <td>
-                  <% else %>
-                      <td class="success">
-                  <% end %>
-                  <%= el %></td>
-
+              <% if @items[i].nil? %>
+                  <td>
+              <% else %>
+                  <td class="success">
               <% end %>
-            </tr>
+              <%= el %></td>
 
-        <% end %>
+          <% end %>
+        </tr>
+        <!-- Valor -->
+        <tr>
+          <th><%= @str[0] %></th>
+          <% @c.each_with_index do |el, i| %>
+
+              <% if @items[i].nil? %>
+                  <td>
+              <% else %>
+                  <td class="success">
+              <% end %>
+              <%= el %></td>
+
+          <% end %>
+        </tr>
 
       </table>
     </div>
