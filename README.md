@@ -1,4 +1,4 @@
-# Pesquisa-Operacional -> Simplex
+# Pesquisa-Operacional -> Simplex e Knapsnack
 
 Projeto de Pesquisa Operacional
 
@@ -11,7 +11,19 @@ Alunos:
 * Cristiano Vicente - [github.com/CristSky](https://github.com/CristSky)
 * Vitoria Mendes Lopes - [github.com/vimendes](https://github.com/vimendes)
 
-###Documentação
+###Knapsnack (acesse em [https://disboard.herokuapp.com/knapsack](https://disboard.herokuapp.com/knapsack))
+1. **O que é o Knapsnack**
+  O problema da mochila (em inglês, Knapsack problem) é um problema de optimização combinatória. O nome dá-se devido ao modelo de uma situação em que é necessário preencher uma mochila com objetos de diferentes pesos e valores. O objetivo é que se preencha a mochila com o maior valor possível, não ultrapassando o peso máximo.
+2. **Página Inicial**
+  * Nossa página inicial mostra o que necessitamos de informações para os cálculos e chegar a um resultado.
+  * Precisamos da capacidade máxima e da quantidade de itens. Logo, colocamos o peso e valor para cada item.
+3. **Resultado**
+  * Clicando no botão "Continuar", veremos a resolução do método.
+  
+
+***
+
+###Simplex (acesse em [https://disboard.herokuapp.com/simplex](https://disboard.herokuapp.com/simplex))
 
 * **O que é o Simplex**
 * **Página inicial**
