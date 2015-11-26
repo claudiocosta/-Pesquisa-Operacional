@@ -1,3 +1,67 @@
+***
+## Nota de liberação: Mochila (Knapsack)
+
+### Introdução
+* Este documento provê uma visão geral da versão do aplicativo para solução do problema da Mochila (Knapsack), que está sendo liberada. Aqui descreveremos as funcionalidades do aplicativo, bem como seus problemas e limitações conhecidos. Por último são descritas as demandas e os problemas que foram resolvidos para liberação da versão atual.
+
+
+1.  **Nota de release a ser publicado**
+ * Projeto Knapsack, resolução do problema da Mochila.
+
+
+2.  **Problemas conhecidos e limitações**
+ * Tudo ocorreu bem no processo, não houve nenhum problema ou limitação dentro do escopo definido.
+
+
+3. **Datas Importantes**
+ - Segue abaixo as datas importantes do desenvolvimento:
+
+    | Data | Evento |
+| --- | --- |
+| 13/11 | Início do planejamento. |
+| 13/11 | Início do desenvolvimento |
+| 14/11 | Testes |
+| 15/11 | Fim do teste |
+| 16/11 | Liberação para produção |
+
+
+4.  **Compatibilidade**
+
+  | Requisitos | Ferramentas |
+| --- | --- |
+| Navegadores | Mozilla Firefox, Google Chrome e Internet Explorer |
+| Sistema operacional | Qualquer sistema com web Browser que suporte HTML5 |
+
+  | | Tecnologias |
+| --- | --- |
+| Linguagem de programação | Ruby |
+| Framework WEB | Ruby on Rails(back-end), Bootstrap 3 (front-end) |
+| IDE | RubyMine |
+| Design pattern | MVC |
+| Servidor Web | Heroku |
+ 
+
+5. **Procedimento de alteração de configuração do Ambiente**
+  * Foi adicionado a conta já existente no servidor Heroku com um domínio gratuito https://disboard.herokuapp.com/
+Foi gerado uma secret_key_base, para o modo de produção.
+Através de um comando “git push” foi feito o upload dos arquivos da aplicação para o servidor do heroku, o servidor faz a detecção do framework utilizado e roda automaticamente os serviços necessários para o funcionamento da aplicação.
+
+
+6. **Atividades realizadas no período**
+ * Nessa liberação foram contemplados os seguintes itens:
+
+    | Cód | Título | Tarefa | Situação |
+| --- | --- | --- | --- |
+| 1 | Criação do Front-End | Criação das views (knapsack, result e _form), possibilitando o usuário enviar seus dados para o cálculo e verificar seus resultados. | Concluído |
+| 2 | Desenvolvimento do método | Algoritmo Knapsack, que faz o calculo do problema da mochila. | Concluído |
+| 3 | Testes gerais | Testes manuais feitos pelos desenvolvedores | Concluído |
+
+
+
+***
+***
+
+
 # Pesquisa-Operacional -> Simplex e Knapsnack
 
 Projeto de Pesquisa Operacional
