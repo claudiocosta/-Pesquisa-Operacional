@@ -4,7 +4,7 @@
   <%= form_tag(@path, class: "form-inline") do %>
       <div class="content">
         <div id="parte1 form-group">
-          <p class="text-center"><u><strong>Informações</strong></u></p><br/>
+          <p class="text-center"><cite><strong>Informações</strong></cite></p><br/>
           <label for="input1"><%= @input1 %></label>
           <input type="number" class="form-control fci-size" name="input1" id="input1" autofocus size="3" min="1"/>
 
@@ -22,9 +22,9 @@
       <br/><br/>
 
       <% if @opt == 0 %>
-          <%= render "simplex/simplex" %>
+          <%= render 'simplex/simplex' %>
       <% elsif @opt == 1 %>
-          <%= render "knapsack/knapsack" %>
+          <%= render 'knapsack/knapsack' %>
       <% end %>
 
       <br>
